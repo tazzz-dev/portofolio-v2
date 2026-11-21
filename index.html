@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Muhammad Mumtaaz · Fullstack Developer</title>
+<meta name="description" content="Portofolio Muhammad Mumtaaz · Fullstack Developer, Game Developer, Robotics Enthusiast. I explore what exists, imagine what doesn't, and build what's next." />
+<meta name="theme-color" content="#0B111C" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="scroll.css" />
+<noscript><style>
+  [data-sa] .sa-inner { clip-path: none !important; }
+  [data-sa] [data-sa-reveal] > *, [data-sa] [data-sa-stagger] > *,
+  [data-sa] [data-sa-block], [data-sa] .sa-mask-i {
+    opacity: 1 !important; transform: none !important; translate: none !important;
+  }
+  .ld { display: none !important; }
+  html.is-loading, html.is-loading body { overflow: auto !important; }
+</style></noscript>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<div class="ld" id="ld" aria-hidden="true">
+  <div class="ld__cells" id="ldCells"></div>
+  <div class="ld__mid">
+    <div class="ld__grid">
+      <i></i><i></i><i></i>
+      <i></i><i></i><i></i>
+      <i></i><i></i><i></i>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var el = document.getElementById('ld');
+  if (!el) return;
+
+  var host = document.getElementById('ldCells');
+  var COLS = 14, ROWS = 9;
+  var START = 2.35;   /* sel grid mulai menghilang */
+  var STEP = 0.03;
+
+  for (var r = 0; r < ROWS; r++) {
+    for (var c = 0; c < COLS; c++) {
+      var cell = document.createElement('div');
+      cell.className = 'ld__cell';
+      cell.style.left = (c * (100 / COLS)) + '%';
+      cell.style.top = (r * (100 / ROWS)) + '%';
+      cell.style.width = (100 / COLS + 0.35) + '%';
+      cell.style.height = (100 / ROWS + 0.35) + '%';
+      cell.style.setProperty('--d', (START + (c + r) * STEP).toFixed(2) + 's');
+      host.appendChild(cell);
+    }
+  }
+
+  document.documentElement.classList.add('is-loading');
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hidden = document.visibilityState === 'hidden';
+
+  function done() {
+    if (el.parentNode) el.parentNode.removeChild(el);
+    document.documentElement.classList.remove('is-loading');
+  }
+
+  /* tab dibuka di background: jangan tahan halaman */
+  if (hidden) { done(); return; }
+
+  /* hormati reduced-motion: tanpa animasi, langsung tampil */
+  if (reduce) {
+    el.classList.add('is-static');
+    setTimeout(done, 350);
+    return;
+  }
+
+  setTimeout(done, 3700);
+})();
+</script>
+
+
+<!-- =======================================================
+     HEADER · sticky, hanya dipakai halaman portofolio
+     ======================================================= -->
+<header class="switcher">
+  <a class="sw-logo" href="#top">
+    <span class="sw-mark" aria-hidden="true">✦</span>
+    <span>Mumtaaz<em>Fullstack Developer</em></span>
+  </a>
+
+  <nav class="sw-nav is-text" aria-label="Page sections">
+    <a href="#about" data-nav="about">About</a>
+    <a href="#tools" data-nav="tools">Tools</a>
+    <a href="#work" data-nav="work">Work</a>
+    <a href="#contact" data-nav="contact">Contact</a>
+  </nav>
+</header>
+
+<main id="top">
+<!-- =======================================================
+     HERO · rel kiri (L1) + panel foto (R1) + marquee
+     Ornamen rel & slot foto: lihat blok "HERO · REL + FOTO"
+     di styles.css.
+     ======================================================= -->
+<section class="hero v-b v-b--portfolio hero--rail" id="hero">
+  <div class="b-frame">
+    <div class="b-col b-col-left">
+      <div class="hf" aria-hidden="true">
+        <span class="hf-grid" style="--sz:144px;--a:.07"></span>
+        <span class="hf-cell hf-cell--dots" style="--x:84%;--y:22%;--w:144px;--h:144px;--o:.95"></span>
+        <span class="hf-cross" style="--x:84%;--y:22%;--w:22px;--o:.4"></span>
+        <span class="hf-cell hf-cell--hatch" style="--x:86%;--y:52%;--w:216px;--h:108px;--o:.95"></span>
+        <span class="hf-cell hf-cell--lemon" style="--x:80%;--y:79%;--w:108px;--h:108px;--o:.9"></span>
+        <span class="hf-dot" style="--x:70%;--y:64%;--s:3px;--o:.45"></span>
+        <span class="hf-star" style="--x:80%;--y:79%;--s:8px;--o:.55"></span>
+      </div>
+      <span class="b-ticks" aria-hidden="true"></span>
+      <div class="b-rail" aria-hidden="true">
+        <i></i>
+        <span>Since <b>2021</b></span>
+        <i></i>
+        <span>Build what's next</span>
+        <i></i>
+      </div>
+
+      <div class="b-topline">
+        <span class="b-badge">OPEN TO WORK</span>
+        <span class="b-mono">FULLSTACK / GAME / ROBOTICS</span>
+      </div>
+
+      <h1 class="b-title">
+        <span>Muhammad</span>
+        <span class="b-title-mark">Mumtaaz<span class="b-cursor" aria-hidden="true"></span></span>
+      </h1>
+
+      <p class="b-sub">
+        I explore what exists, imagine what doesn't, and build what's next.
+        A student building interfaces, games, and systems, from HTML5
+        to full-stack architecture.
+      </p>
+
+      <div class="b-actions">
+        <a class="b-btn" href="#work">VIEW PROJECTS <span aria-hidden="true">→</span></a>
+        <a class="b-btn b-btn-ghost" href="#contact">GET IN TOUCH</a>
+      </div>
+
+      <div class="hero-social">
+        <a href="https://github.com/tazzz-dev" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a href="https://linkedin.com/in/muhammadmumtaaz" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+        <a href="mailto:mumtaazraihaan@gmail.com">Email ↗</a>
+      </div>
+
+      <ul class="b-chips" aria-label="Roles">
+        <li>FULLSTACK DEV</li>
+        <li>GAME DEV</li>
+        <li>ROBOTICS</li>
+      </ul>
+
+      <div class="b-halftone" aria-hidden="true"></div>
+    </div>
+
+    <div class="b-col b-col-right">
+      <div class="b-panel-head">
+        <span>MUHAMMAD MUMTAAZ</span>
+        <span>3 : 4</span>
+      </div>
+
+      <div class="b-shot">
+        <img src="assets/profile/profile-original-web.webp"
+             alt="Muhammad Mumtaaz"
+             width="900" height="1200"
+             fetchpriority="high" decoding="async" />
+        <span class="b-shot-year" aria-hidden="true">'26</span>
+        <span class="b-shot-cap">PORTRAIT · 2026</span>
+      </div>
+
+      <div class="b-panel-foot">
+        <span class="b-mono">FULLSTACK · GAME · ROBOTICS</span>
+        <span class="b-arrow" aria-hidden="true">↗</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="b-marquee" aria-hidden="true">
+    <div class="b-marquee-track">
+      <span>MUHAMMAD MUMTAAZ ✦ FULLSTACK × GAME × ROBOTICS ✦ BUILD WHAT'S NEXT ✦</span>
+      <span>MUHAMMAD MUMTAAZ ✦ FULLSTACK × GAME × ROBOTICS ✦ BUILD WHAT'S NEXT ✦</span>
+    </div>
+  </div>
+</section>
+
+<!-- =======================================================
+     THE JOURNEY · nanti diganti jadi pengenalan "siapa saya"
+     ======================================================= -->
+<section class="sec sec--jbg" id="about" data-sa="s2">
+  <span class="sa-rule" aria-hidden="true"></span>
+  <span class="sa-sweep" aria-hidden="true"></span>
+
+  <!-- latar J3 · Constellation: bintang + garis rasi, cincin putus-putus kiri bawah -->
+  <div class="jbg" aria-hidden="true">
+    <span class="jbg-ring jbg-ring--dash" style="--x:14%;--y:86%;--d:min(62vw,580px);--o:.5"></span>
+    <span class="jbg-ring jbg-ring--thin" style="--x:14%;--y:86%;--d:min(88vw,820px);--o:.65"></span>
+
+    <span class="jbg-line" style="--x:13%;--y:20%;--w:min(24vw,300px);--r:15deg;--o:.8"></span>
+    <span class="jbg-line" style="--x:36%;--y:26%;--w:min(18vw,220px);--r:52deg;--o:.6"></span>
+    <span class="jbg-line" style="--x:64%;--y:61%;--w:min(24vw,300px);--r:-22deg;--o:.65"></span>
+    <span class="jbg-line" style="--x:72%;--y:40%;--w:min(16vw,200px);--r:76deg;--o:.5"></span>
+    <span class="jbg-line" style="--x:22%;--y:72%;--w:min(20vw,240px);--r:-16deg;--o:.45"></span>
+    <span class="jbg-line" style="--x:50%;--y:44%;--w:min(14vw,170px);--r:120deg;--o:.4"></span>
+
+    <span class="jbg-star" style="--x:13%;--y:20%;--s:24px;--o:.85"></span>
+    <span class="jbg-star" style="--x:36%;--y:26%;--s:14px;--o:.5"></span>
+    <span class="jbg-star" style="--x:52%;--y:40%;--s:10px;--o:.4"></span>
+    <span class="jbg-star" style="--x:64%;--y:61%;--s:18px;--o:.6;--c:var(--paper);--g:rgba(244,247,255,.4)"></span>
+    <span class="jbg-star" style="--x:72%;--y:40%;--s:12px;--o:.45"></span>
+    <span class="jbg-star" style="--x:88%;--y:76%;--s:15px;--o:.45"></span>
+    <span class="jbg-star" style="--x:22%;--y:72%;--s:13px;--o:.4"></span>
+    <span class="jbg-star" style="--x:45%;--y:90%;--s:9px;--o:.3"></span>
+    <span class="jbg-star" style="--x:82%;--y:16%;--s:10px;--o:.35"></span>
+
+    <span class="jbg-dot" style="--x:24%;--y:34%;--s:3px;--o:.7"></span>
+    <span class="jbg-dot" style="--x:43%;--y:16%;--s:3px;--o:.5"></span>
+    <span class="jbg-dot" style="--x:57%;--y:28%;--s:2px;--o:.55"></span>
+    <span class="jbg-dot" style="--x:77%;--y:56%;--s:3px;--o:.5"></span>
+    <span class="jbg-dot" style="--x:32%;--y:64%;--s:2px;--o:.55"></span>
+    <span class="jbg-dot" style="--x:86%;--y:26%;--s:2px;--o:.45"></span>
+  </div>
+
+  <div class="sec-head">
+    <div>
+      <p class="sec-label">About</p>
+      <h2 class="sec-title">The Journey</h2>
+    </div>
+    <p class="sec-note">2021 → present</p>
+  </div>
+
+  <div class="jrn">
+    <div>
+      <p class="jrn-quote">I explore what exists, imagine what doesn't, and <mark>build</mark> what's next.</p>
+      <p class="jrn-note">
+        Started with HTML5 and CSS3 layout, then went down to the foundations of
+        computer science through C and MySQL. Now focused on the JavaScript
+        ecosystem: React, Node.js, and scalable full-stack architecture.
+      </p>
+      <ul class="jrn-tags" aria-label="Fields">
+        <li>UI / UX</li>
+        <li>GAME DEV</li>
+        <li>FULL-STACK</li>
+        <li>ROBOTICS</li>
+      </ul>
+    </div>
+
+    <div class="tls">
+      <div class="tls-row">
+        <span class="tls-year">2021</span>
+        <div>
+          <h3 class="tls-title">The Genesis</h3>
+          <p class="tls-desc">
+            Took the first steps into web engineering by learning the structural
+            and layout foundations of digital interfaces with basic HTML5 and CSS3.
+          </p>
+        </div>
+      </div>
+      <div class="tls-row">
+        <span class="tls-year">2024</span>
+        <div>
+          <h3 class="tls-title">Academic Foundation</h3>
+          <p class="tls-desc">
+            Entered university and strengthened programming fundamentals through
+            the C language, relational databases (MySQL), and core computer science logic.
+          </p>
+        </div>
+      </div>
+      <div class="tls-row">
+        <span class="tls-year">2025</span>
+        <div>
+          <h3 class="tls-title">Modern Tech Stack</h3>
+          <p class="tls-desc">
+            Focused on modern applications with the JavaScript ecosystem (React.js &amp;
+            Node.js), repository management (Git), and scalable full-stack architecture.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =======================================================
+     TOOLS & TECH · ledger per kelompok (T1) + latar Burst (S3)
+     30 tools / 7 kelompok, data dari repo github.com/tazzz-dev
+     ======================================================= -->
+<section class="sec sec--jbg" id="tools" data-sa="s2">
+  <span class="sa-sweep" aria-hidden="true"></span>
+
+  <div class="jbg" aria-hidden="true">
+    <span class="jbg-glow" style="--fx:94%;--fy:98%"></span>
+    <span class="jbg-rays" style="--fx:94%;--fy:98%;--o:.3"></span>
+    <span class="jbg-ring jbg-ring--dash" style="--x:94%;--y:98%;--d:min(58vw,580px);--o:.5"></span>
+    <span class="jbg-ring jbg-ring--lemon" style="--x:94%;--y:98%;--d:min(32vw,320px);--o:.45"></span>
+
+    <span class="jbg-star" style="--x:68%;--y:82%;--s:18px;--o:.5"></span>
+    <span class="jbg-star" style="--x:84%;--y:90%;--s:11px;--o:.35"></span>
+    <span class="jbg-star" style="--x:48%;--y:95%;--s:9px;--o:.28"></span>
+    <span class="jbg-star" style="--x:97%;--y:66%;--s:9px;--o:.3"></span>
+    <span class="jbg-star" style="--x:2.5%;--y:30%;--s:11px;--o:.32"></span>
+    <span class="jbg-star" style="--x:38%;--y:8%;--s:8px;--o:.26"></span>
+
+    <span class="jbg-dot" style="--x:60%;--y:88%;--s:3px;--o:.45"></span>
+    <span class="jbg-dot" style="--x:76%;--y:96%;--s:2px;--o:.5"></span>
+    <span class="jbg-dot" style="--x:90%;--y:84%;--s:3px;--o:.4"></span>
+  </div>
+
+  <div class="sec-head">
+    <div>
+      <p class="sec-label">Tools</p>
+      <h2 class="sec-title">Tools &amp; Tech</h2>
+    </div>
+    <p class="sec-note">30 tools · 07 groups</p>
+  </div>
+
+  <div class="t1">
+    <div class="t1-g">
+      <div class="t1-h"><span class="t1-num">01</span><h3>Languages</h3><span class="t1-c">07</span></div>
+      <ul class="t1-i">
+        <li><span>JavaScript</span><small>ES6+</small></li>
+        <li><span>Dart</span><small>FLUTTER</small></li>
+        <li><span>C#</span><small>UNITY</small></li>
+        <li><span>Java</span><small>OOP</small></li>
+        <li><span>C++</span><small>NATIVE</small></li>
+        <li><span>PHP</span><small>WEB</small></li>
+        <li><span>SQL</span><small>QUERY</small></li>
+      </ul>
+    </div>
+
+    <div class="t1-g">
+      <div class="t1-h"><span class="t1-num">02</span><h3>Web</h3><span class="t1-c">06</span></div>
+      <ul class="t1-i">
+        <li><span>React</span><small>UI</small></li>
+        <li><span>Node.js</span><small>RUNTIME</small></li>
+        <li><span>Express</span><small>API</small></li>
+        <li><span>Tailwind CSS</span><small>STYLE</small></li>
+        <li><span>HTML5</span><small>MARKUP</small></li>
+        <li><span>CSS3</span><small>LAYOUT</small></li>
+      </ul>
+    </div>
+
+    <div class="t1-g">
+      <div class="t1-h"><span class="t1-num">03</span><h3>Mobile</h3><span class="t1-c">05</span></div>
+      <ul class="t1-i">
+        <li><span>Flutter</span><small>APP</small></li>
+        <li><span>Riverpod</span><small>STATE</small></li>
+        <li><span>Drift</span><small>ORM</small></li>
+        <li><span>Supabase</span><small>BACKEND</small></li>
+        <li><span>ML Kit</span><small>OCR</small></li>
+      </ul>
+    </div>
+
+    <div class="t1-g">
+      <div class="t1-h"><span class="t1-num">04</span><h3>Game</h3><span class="t1-c">03</span></div>
+      <ul class="t1-i">
+        <li><span>Unity</span><small>ENGINE</small></li>
+        <li><span>C# Scripting</span><small>GAMEPLAY</small></li>
+        <li><span>ShaderLab / HLSL</span><small>SHADER</small></li>
+      </ul>
+    </div>
+
+    <div class="t1-g">
+      <div class="t1-h"><span class="t1-num">05</span><h3>Data</h3><span class="t1-c">03</span></div>
+      <ul class="t1-i">
+        <li><span>MySQL</span><small>RELATIONAL</small></li>
+        <li><span>PostgreSQL</span><small>SUPABASE</small></li>
+        <li><span>SQLite</span><small>LOCAL</small></li>
+      </ul>
+    </div>
+
+    <div class="t1-g">
+      <div class="t1-h"><span class="t1-num">06</span><h3>Tools</h3><span class="t1-c">04</span></div>
+      <ul class="t1-i">
+        <li><span>Git</span><small>VCS</small></li>
+        <li><span>GitHub</span><small>REPO</small></li>
+        <li><span>VS Code</span><small>EDITOR</small></li>
+        <li><span>Figma</span><small>DESIGN</small></li>
+      </ul>
+    </div>
+
+    <div class="t1-g">
+      <div class="t1-h"><span class="t1-num">07</span><h3>Hardware</h3><span class="t1-c">02</span></div>
+      <ul class="t1-i">
+        <li><span>Arduino</span><small>MCU</small></li>
+        <li><span>Embedded C++</span><small>FIRMWARE</small></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- =======================================================
+     PROJECT · VARIAN 3 · BENTO
+     Grid 6 kolom. Satu sel besar (lemon) untuk proyek terbaru,
+     lima sel kecil untuk sisanya.
+     ======================================================= -->
+<section class="sec sec--jbg pj-field" id="work" data-sa="s2">
+  <span class="sa-sweep" aria-hidden="true"></span>
+
+  <div class="jbg" aria-hidden="true">
+    <!-- busur memeluk grid dari bawah -->
+    <span class="pj-arc" style="--t:88%;--h:30%;--l:-9%;--r:-9%;--o:.9"></span>
+    <span class="pj-arc pj-arc--lemon" style="--t:93%;--h:23%;--l:4%;--r:4%;--o:.8;border-style:dashed"></span>
+    <span class="pj-arc" style="--t:97.5%;--h:16%;--l:17%;--r:17%;--o:.6"></span>
+
+    <!-- kanan atas: busur seperempat dari sudut + rangkaian bintang -->
+    <span class="jbg-ring jbg-ring--thin pj-top" style="--x:101%;--y:1%;--d:min(36vw,360px);--o:.75"></span>
+    <span class="jbg-ring jbg-ring--lemon pj-top" style="--x:101%;--y:1%;--d:min(23vw,235px);--o:.6"></span>
+    <span class="jbg-ring jbg-ring--dash pj-top" style="--x:101%;--y:1%;--d:min(16vw,160px);--o:.55"></span>
+    <span class="jbg-line pj-top" style="--x:46%;--y:7%;--w:min(20vw,290px);--r:-3deg;--o:.55"></span>
+    <span class="jbg-line pj-top" style="--x:66%;--y:6%;--w:min(17vw,250px);--r:5deg;--o:.5"></span>
+    <span class="jbg-line pj-top" style="--x:83%;--y:7.5%;--w:min(14vw,205px);--r:-10deg;--o:.45"></span>
+    <span class="jbg-star pj-top" style="--x:46%;--y:7%;--s:11px;--o:.3"></span>
+    <span class="jbg-star pj-top" style="--x:57%;--y:13%;--s:8px;--o:.24"></span>
+    <span class="jbg-star pj-top" style="--x:66%;--y:6%;--s:20px;--o:.4"></span>
+    <span class="jbg-star pj-top" style="--x:74%;--y:14%;--s:10px;--o:.3"></span>
+    <span class="jbg-star pj-top" style="--x:83%;--y:7.5%;--s:13px;--o:.38"></span>
+    <span class="jbg-star pj-top" style="--x:92.6%;--y:15%;--s:9px;--o:.28"></span>
+    <span class="jbg-star pj-top" style="--x:97%;--y:5%;--s:16px;--o:.42"></span>
+    <span class="jbg-dot pj-top" style="--x:51%;--y:10%;--s:2px;--o:.4"></span>
+    <span class="jbg-dot pj-top" style="--x:70%;--y:10.5%;--s:3px;--o:.36"></span>
+    <span class="jbg-dot pj-top" style="--x:88%;--y:11.5%;--s:2px;--o:.4"></span>
+    <span class="jbg-dot pj-top" style="--x:95%;--y:9%;--s:2px;--o:.38"></span>
+
+    <!-- tepi & pita bawah -->
+    <span class="jbg-star" style="--x:4%;--y:89%;--s:16px;--o:.42"></span>
+    <span class="jbg-star" style="--x:96%;--y:89%;--s:14px;--o:.38"></span>
+    <span class="jbg-star" style="--x:26%;--y:96%;--s:11px;--o:.3"></span>
+    <span class="jbg-star" style="--x:74%;--y:96%;--s:12px;--o:.32"></span>
+    <span class="jbg-star" style="--x:50%;--y:98.6%;--s:9px;--o:.28"></span>
+    <span class="jbg-star" style="--x:98.4%;--y:30%;--s:12px;--o:.34"></span>
+    <span class="jbg-star" style="--x:1.6%;--y:36%;--s:10px;--o:.3"></span>
+    <span class="jbg-dot" style="--x:14%;--y:97%;--s:3px;--o:.4"></span>
+    <span class="jbg-dot" style="--x:38%;--y:99%;--s:3px;--o:.32"></span>
+    <span class="jbg-dot" style="--x:62%;--y:99%;--s:2px;--o:.32"></span>
+    <span class="jbg-dot" style="--x:86%;--y:97%;--s:3px;--o:.4"></span>
+  </div>
+
+  <div class="sec-head">
+    <div>
+      <p class="sec-label">Work</p>
+      <h2 class="sec-title">Latest Work</h2>
+    </div>
+    <p class="sec-note">06 projects</p>
+  </div>
+
+  <div class="pv3-grid">
+
+    <article class="pv3-cell pv3-cell--hero">
+      <div class="pj-in pj-in--hero" aria-hidden="true">
+        <span class="pj-in-star" style="--x:92%;--y:26%;--s:20px;--o:.8"></span>
+        <span class="pj-in-star" style="--x:80%;--y:40%;--s:11px;--o:.6"></span>
+        <span class="pj-in-star pj-in-star--cobalt" style="--x:88%;--y:52%;--s:16px;--o:.9"></span>
+        <span class="pj-in-star" style="--x:74%;--y:62%;--s:8px;--o:.5"></span>
+        <span class="pj-in-star" style="--x:97%;--y:66%;--s:11px;--o:.6"></span>
+        <span class="pj-in-star" style="--x:66%;--y:44%;--s:6px;--o:.4"></span>
+        <span class="pj-in-star" style="--x:84%;--y:70%;--s:7px;--o:.45"></span>
+        <span class="pj-in-star" style="--x:92%;--y:80%;--s:10px;--o:.4"></span>
+        <span class="pj-in-star" style="--x:78%;--y:74%;--s:6px;--o:.35"></span>
+        <span class="pj-in-dot" style="--x:86%;--y:20%;--s:3px;--o:.6"></span>
+        <span class="pj-in-dot" style="--x:70%;--y:54%;--s:3px;--o:.5"></span>
+        <span class="pj-in-dot" style="--x:94%;--y:58%;--s:2px;--o:.5"></span>
+        <span class="pj-in-dot" style="--x:76%;--y:30%;--s:2px;--o:.45"></span>
+        <span class="pj-in-dot" style="--x:86%;--y:84%;--s:3px;--o:.35"></span>
+      </div>
+      <div class="pv3-hero-top">
+        <span class="pv3-num pv3-num--big">01</span>
+        <span class="badge badge--dev">In Development</span>
+      </div>
+      <h3 class="pv3-title pv3-title--big">ProdActivity</h3>
+      <p class="pv3-desc">
+        AI-based “virtual mentor” web platform for balancing academics,
+        organizations, and student careers. Roadmap profiling plus an interactive
+        chatbot to stay clear of burnout and FOMO.
+      </p>
+      <ul class="pv3-tags"><li>React</li><li>AI Integration</li><li>Groq API</li><li>Tailwind</li></ul>
+      <div class="pv3-foot">
+        <span class="pv3-role">Frontend Developer · 2026</span>
+        <div class="pv3-links">
+          <a href="https://github.com/Liaurentino/ProjectWebBersama" target="_blank" rel="noreferrer">Repo ↗</a>
+          <a href="https://drive.google.com/file/d/1fqWi2qxW5VIiTGtoKAhwTqE9DiI8mtpY/view" target="_blank" rel="noreferrer">Document ↗</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="pv3-cell">
+      <div class="pj-in" aria-hidden="true">
+        <span class="pj-in-arc" style="--x:100%;--y:78%;--d:210px;--o:.9"></span>
+        <span class="pj-in-arc pj-in-arc--lemon" style="--x:100%;--y:78%;--d:150px;--o:.9"></span>
+        <span class="pj-in-arc pj-in-arc--dash" style="--x:102%;--y:104%;--d:112px;--o:.45"></span>
+        <span class="jbg-star" style="--x:84%;--y:30%;--s:9px;--o:.6"></span>
+        <span class="jbg-star" style="--x:73%;--y:47%;--s:6px;--o:.4;--c:rgba(244,247,255,.8);--g:rgba(244,247,255,.22)"></span>
+        <span class="jbg-dot" style="--x:90%;--y:22%;--s:2px;--o:.5"></span>
+        <span class="jbg-dot" style="--x:66%;--y:62%;--s:2px;--o:.4"></span>
+      </div>
+      <div class="pv3-row">
+        <span class="pv3-num">02</span>
+        <h3 class="pv3-title">SocialAct</h3>
+        <span class="pv3-year">2025</span>
+      </div>
+      <p class="pv3-desc pv3-desc--sm">
+        Social action platform: volunteer management, donation campaigns, impact reporting.
+      </p>
+      <ul class="pv3-tags"><li>CodeIgniter 3</li><li>MySQL</li><li>PHP</li></ul>
+      <div class="pv3-foot">
+        <span class="badge">Completed</span>
+        <div class="pv3-links">
+          <a href="https://github.com/mfaatihyusron/socialact" target="_blank" rel="noreferrer">Repo ↗</a>
+          <a href="https://drive.google.com/file/d/1mlVLPcdQsDg9bWOSuAPvfsQ5b9rIk16E/view" target="_blank" rel="noreferrer">Document ↗</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="pv3-cell">
+      <div class="pj-in" aria-hidden="true">
+        <span class="pj-in-arc" style="--x:100%;--y:81%;--d:210px;--o:.9"></span>
+        <span class="pj-in-arc pj-in-arc--lemon" style="--x:100%;--y:81%;--d:150px;--o:.9"></span>
+        <span class="pj-in-arc pj-in-arc--dash" style="--x:102%;--y:104%;--d:112px;--o:.45"></span>
+        <span class="jbg-star" style="--x:84%;--y:33%;--s:9px;--o:.6"></span>
+        <span class="jbg-star" style="--x:73%;--y:50%;--s:6px;--o:.4;--c:rgba(244,247,255,.8);--g:rgba(244,247,255,.22)"></span>
+        <span class="jbg-dot" style="--x:90%;--y:25%;--s:2px;--o:.5"></span>
+        <span class="jbg-dot" style="--x:66%;--y:65%;--s:2px;--o:.4"></span>
+      </div>
+      <div class="pv3-row">
+        <span class="pv3-num">03</span>
+        <h3 class="pv3-title">RestoApp</h3>
+        <span class="pv3-year">2025</span>
+      </div>
+      <p class="pv3-desc pv3-desc--sm">
+        Restaurant menu ordering via QR Code: POS, stock, table numbers, cashier accounts.
+      </p>
+      <ul class="pv3-tags"><li>CodeIgniter 3</li><li>MySQL</li><li>PHP</li></ul>
+      <div class="pv3-foot">
+        <span class="badge">Completed</span>
+        <div class="pv3-links">
+          <a href="https://github.com/tazzz-dev/resto-app" target="_blank" rel="noreferrer">Repo ↗</a>
+          <a href="https://drive.google.com/file/d/1llr6OYW9KATH3qa5okMk4BIHrS4VumBy/view" target="_blank" rel="noreferrer">Document ↗</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="pv3-cell pv3-cell--sm">
+      <div class="pj-in" aria-hidden="true">
+        <span class="pj-in-arc" style="--x:100%;--y:75%;--d:210px;--o:.9"></span>
+        <span class="pj-in-arc pj-in-arc--lemon" style="--x:100%;--y:75%;--d:150px;--o:.9"></span>
+        <span class="pj-in-arc pj-in-arc--dash" style="--x:102%;--y:104%;--d:112px;--o:.45"></span>
+        <span class="jbg-star" style="--x:84%;--y:27%;--s:9px;--o:.6"></span>
+        <span class="jbg-star" style="--x:73%;--y:44%;--s:6px;--o:.4;--c:rgba(244,247,255,.8);--g:rgba(244,247,255,.22)"></span>
+        <span class="jbg-dot" style="--x:90%;--y:19%;--s:2px;--o:.5"></span>
+        <span class="jbg-dot" style="--x:66%;--y:59%;--s:2px;--o:.4"></span>
+      </div>
+      <div class="pv3-row">
+        <span class="pv3-num">04</span>
+        <h3 class="pv3-title">Snake</h3>
+      </div>
+      <p class="pv3-year pv3-year--block">2025 · Game Dev</p>
+      <ul class="pv3-tags"><li>C++</li><li>Makefile</li></ul>
+      <div class="pv3-foot">
+        <div class="pv3-links">
+          <a href="https://github.com/tazzz-dev/snake-classic" target="_blank" rel="noreferrer">Repo ↗</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="pv3-cell pv3-cell--sm">
+      <div class="pj-in" aria-hidden="true">
+        <span class="pj-in-arc" style="--x:100%;--y:80%;--d:210px;--o:.9"></span>
+        <span class="pj-in-arc pj-in-arc--lemon" style="--x:100%;--y:80%;--d:150px;--o:.9"></span>
+        <span class="pj-in-arc pj-in-arc--dash" style="--x:102%;--y:104%;--d:112px;--o:.45"></span>
+        <span class="jbg-star" style="--x:84%;--y:32%;--s:9px;--o:.6"></span>
+        <span class="jbg-star" style="--x:73%;--y:49%;--s:6px;--o:.4;--c:rgba(244,247,255,.8);--g:rgba(244,247,255,.22)"></span>
+        <span class="jbg-dot" style="--x:90%;--y:24%;--s:2px;--o:.5"></span>
+        <span class="jbg-dot" style="--x:66%;--y:64%;--s:2px;--o:.4"></span>
+      </div>
+      <div class="pv3-row">
+        <span class="pv3-num">05</span>
+        <h3 class="pv3-title">Pong</h3>
+      </div>
+      <p class="pv3-year pv3-year--block">2025 · Game Dev</p>
+      <ul class="pv3-tags"><li>C++</li><li>Makefile</li></ul>
+      <div class="pv3-foot">
+        <div class="pv3-links">
+          <a href="https://github.com/tazzz-dev/pong-classic" target="_blank" rel="noreferrer">Repo ↗</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="pv3-cell pv3-cell--sm">
+      <div class="pj-in" aria-hidden="true">
+        <span class="pj-in-arc" style="--x:100%;--y:76%;--d:210px;--o:.9"></span>
+        <span class="pj-in-arc pj-in-arc--lemon" style="--x:100%;--y:76%;--d:150px;--o:.9"></span>
+        <span class="pj-in-arc pj-in-arc--dash" style="--x:102%;--y:104%;--d:112px;--o:.45"></span>
+        <span class="jbg-star" style="--x:84%;--y:28%;--s:9px;--o:.6"></span>
+        <span class="jbg-star" style="--x:73%;--y:45%;--s:6px;--o:.4;--c:rgba(244,247,255,.8);--g:rgba(244,247,255,.22)"></span>
+        <span class="jbg-dot" style="--x:90%;--y:20%;--s:2px;--o:.5"></span>
+        <span class="jbg-dot" style="--x:66%;--y:60%;--s:2px;--o:.4"></span>
+      </div>
+      <div class="pv3-row">
+        <span class="pv3-num">06</span>
+        <h3 class="pv3-title">Barn-E</h3>
+      </div>
+      <p class="pv3-year pv3-year--block">2024 · UI/UX</p>
+      <ul class="pv3-tags"><li>Figma</li><li>Design Thinking</li></ul>
+      <div class="pv3-foot">
+        <div class="pv3-links">
+          <a href="https://drive.google.com/file/d/17-eMZJQ6C2b9_94BUbUz9_P3hgrNrgQs/view" target="_blank" rel="noreferrer">Document ↗</a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- =======================================================
+     LET'S TALK · blok lemon penuh, kata kedua knockout
+     + latar Blueprint (C2): kisi garis ink memudar dari kanan bawah
+     ======================================================= -->
+<section class="cnt" id="contact" data-sa="s2">
+  <span class="sa-rule" aria-hidden="true"></span>
+  <span class="sa-sweep" aria-hidden="true"></span>
+
+  <div class="cbg" aria-hidden="true">
+    <span class="c-grid c-grid--left"></span>
+    <span class="c-grid"></span>
+    <span class="c-ring c-ring--dash" style="--x:92%;--y:96%;--d:min(46vw,440px);--o:.55"></span>
+    <span class="c-ring" style="--x:6%;--y:104%;--d:min(30vw,300px);--o:.45"></span>
+
+    <span class="c-star" style="--x:74%;--y:78%;--s:14px;--o:.3"></span>
+    <span class="c-star" style="--x:88%;--y:88%;--s:9px;--o:.24"></span>
+    <span class="c-star" style="--x:14%;--y:90%;--s:11px;--o:.3"></span>
+    <span class="c-dot" style="--x:66%;--y:90%;--s:4px;--o:.4"></span>
+    <span class="c-dot" style="--x:80%;--y:68%;--s:3px;--o:.3"></span>
+    <span class="c-dot" style="--x:22%;--y:84%;--s:3px;--o:.35"></span>
+  </div>
+
+  <div class="sa-inner">
+    <div class="cnt-grid">
+      <div>
+        <p class="cnt-label">Contact</p>
+        <h2 class="cnt-title">Say<br /><span class="cnt-knock">Hello</span></h2>
+      </div>
+
+      <div>
+        <p class="cnt-note">
+          Got an interesting project or want to collaborate? I'm always open
+          to new conversations, web, games, or both.
+        </p>
+        <a class="cnt-mail" href="mailto:mumtaazraihaan@gmail.com">mumtaazraihaan@gmail.com</a>
+        <div class="cnt-links">
+          <a class="cnt-link" href="mailto:mumtaazraihaan@gmail.com">Email <span aria-hidden="true">↗</span></a>
+          <a class="cnt-link cnt-link--ghost" href="https://github.com/tazzz-dev" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+          <a class="cnt-link cnt-link--ghost" href="https://linkedin.com/in/muhammadmumtaaz" target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =======================================================
+     FOOTER
+     ======================================================= -->
+<footer class="ftr">
+  <span>Built by Muhammad Mumtaaz · 2026</span>
+  <span aria-hidden="true">✦</span>
+</footer>
+</main>
+
+<script src="script.js"></script>
+<script src="scroll.js"></script>
+</body>
+</html>

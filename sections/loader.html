@@ -1,0 +1,57 @@
+<div class="ld" id="ld" aria-hidden="true">
+  <div class="ld__cells" id="ldCells"></div>
+  <div class="ld__mid">
+    <div class="ld__grid">
+      <i></i><i></i><i></i>
+      <i></i><i></i><i></i>
+      <i></i><i></i><i></i>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var el = document.getElementById('ld');
+  if (!el) return;
+
+  var host = document.getElementById('ldCells');
+  var COLS = 14, ROWS = 9;
+  var START = 2.35;   /* sel grid mulai menghilang */
+  var STEP = 0.03;
+
+  for (var r = 0; r < ROWS; r++) {
+    for (var c = 0; c < COLS; c++) {
+      var cell = document.createElement('div');
+      cell.className = 'ld__cell';
+      cell.style.left = (c * (100 / COLS)) + '%';
+      cell.style.top = (r * (100 / ROWS)) + '%';
+      cell.style.width = (100 / COLS + 0.35) + '%';
+      cell.style.height = (100 / ROWS + 0.35) + '%';
+      cell.style.setProperty('--d', (START + (c + r) * STEP).toFixed(2) + 's');
+      host.appendChild(cell);
+    }
+  }
+
+  document.documentElement.classList.add('is-loading');
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hidden = document.visibilityState === 'hidden';
+
+  function done() {
+    if (el.parentNode) el.parentNode.removeChild(el);
+    document.documentElement.classList.remove('is-loading');
+  }
+
+  /* tab dibuka di background: jangan tahan halaman */
+  if (hidden) { done(); return; }
+
+  /* hormati reduced-motion: tanpa animasi, langsung tampil */
+  if (reduce) {
+    el.classList.add('is-static');
+    setTimeout(done, 350);
+    return;
+  }
+
+  setTimeout(done, 3700);
+})();
+</script>
