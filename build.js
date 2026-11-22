@@ -31,6 +31,8 @@ const shell = ({ title, desc, body, header = '', loader = '' }) => `<!DOCTYPE ht
 <title>${title}</title>
 <meta name="description" content="${desc}" />
 <meta name="theme-color" content="#0B111C" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -71,7 +73,7 @@ const letsTalk = read('sections/lets-talk.html');
 const footer = read('sections/footer.html');
 
 const html = shell({
-  title: 'Muhammad Mumtaaz · Fullstack Developer',
+  title: 'MUMTAAZ',
   desc: "Portofolio Muhammad Mumtaaz · Fullstack Developer, Game Developer, Robotics Enthusiast. I explore what exists, imagine what doesn't, and build what's next.",
   loader,
   header,
