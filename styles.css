@@ -2848,11 +2848,16 @@ html.is-loading, html.is-loading body { overflow: hidden; }
   font-size: 10px;
   letter-spacing: .22em;
   text-transform: uppercase;
-  transition: background .25s, border-color .25s, color .25s;
+  transition: transform .18s ease, box-shadow .18s ease, background .25s, border-color .25s, color .25s;
 }
+/* hover sama seperti kartu bento: terangkat + bayangan blok paper */
 .sec-more-btn:hover {
-  background: var(--paper);
-  border-color: var(--paper);
+  transform: translate(-4px, -4px);
+  box-shadow: 8px 8px 0 0 var(--paper);
+}
+.sec-more-btn:active {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 0 var(--paper);
 }
 .sec-more-go {
   font-size: 15px;

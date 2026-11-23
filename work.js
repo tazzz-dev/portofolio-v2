@@ -91,6 +91,7 @@
   if (!root) return;
 
   var wheel = root.querySelector('.wk-wheel');
+  var lane = root.querySelector('.wk-list');
   var names = Array.prototype.slice.call(root.querySelectorAll('.wk-name'));
   var photosBox = root.querySelector('[data-wk-photos]');
   var descEl = root.querySelector('[data-wk-desc]');
@@ -123,9 +124,9 @@
   });
 
   var measure = function () {
-    var h = wheel.clientHeight || 620;
+    var h = lane.clientHeight || 620;
     gap = Math.max(82, Math.min(126, h / 5.1));
-    gapX = Math.min(wheel.clientWidth * 0.6, 280);
+    gapX = Math.min(lane.clientWidth * 0.6, 280);
     paintWheel();
   };
 
@@ -152,6 +153,12 @@
 
       el.classList.toggle('is-on', d === 0);
       el.setAttribute('aria-current', d === 0 ? 'true' : 'false');
+    });
+
+    dots.forEach(function (btn, i) {
+      var on = i === active;
+      btn.classList.toggle('is-on', on);
+      btn.setAttribute('aria-current', on ? 'true' : 'false');
     });
   };
 
@@ -198,6 +205,16 @@
     el.addEventListener('focus', function () { if (i !== active) setActive(i); });
   });
 
+  var dots = Array.prototype.slice.call(root.querySelectorAll('[data-wk-to]'));
+  dots.forEach(function (btn) {
+    btn.addEventListener('click', function () { setActive(Number(btn.dataset.wkTo)); });
+  });
+
+  var nextBtn = root.querySelector('[data-wk-next]');
+  if (nextBtn) {
+    nextBtn.addEventListener('click', function () { setActive(active + 1); });
+  }
+
   root.querySelectorAll('[data-wk-photo]').forEach(function (btn) {
     btn.addEventListener('click', function () { stepPhoto(Number(btn.dataset.wkPhoto)); });
   });
@@ -212,7 +229,7 @@
 
   /* putar wheel dengan scroll, hanya di layar lebar (halaman tidak ikut ter-scroll) */
   var lastWheel = 0;
-  wheel.addEventListener('wheel', function (e) {
+  lane.addEventListener('wheel', function (e) {
     if (window.matchMedia('(max-width: 1000px)').matches) return;
     /* kalau halaman memang perlu di-scroll, jangan rebut gulirannya */
     if (document.documentElement.scrollHeight > window.innerHeight + 4) return;
