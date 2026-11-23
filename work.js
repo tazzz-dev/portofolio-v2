@@ -126,7 +126,7 @@
   var measure = function () {
     var h = lane.clientHeight || 620;
     gap = Math.max(82, Math.min(126, h / 5.1));
-    gapX = Math.min(lane.clientWidth * 0.6, 280);
+    gapX = Math.min(lane.clientWidth * 0.52, 240);
     paintWheel();
   };
 
@@ -209,11 +209,6 @@
   dots.forEach(function (btn) {
     btn.addEventListener('click', function () { setActive(Number(btn.dataset.wkTo)); });
   });
-
-  var nextBtn = root.querySelector('[data-wk-next]');
-  if (nextBtn) {
-    nextBtn.addEventListener('click', function () { setActive(active + 1); });
-  }
 
   root.querySelectorAll('[data-wk-photo]').forEach(function (btn) {
     btn.addEventListener('click', function () { stepPhoto(Number(btn.dataset.wkPhoto)); });

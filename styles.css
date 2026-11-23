@@ -2134,7 +2134,8 @@ a.sw-hint:hover { color: var(--paper); }
 }
 /* scroll.css memberi clip-path inset(0) ke anak langsung section setelah reveal.
    clip itu memotong kartu yang digeser hover (tepi atas/kiri hilang). Beri ruang clip. */
-.pj-field[data-sa].is-in > .pv3-grid { clip-path: inset(-40px) !important; }
+.pj-field[data-sa].is-in > .pv3-grid,
+.pj-field[data-sa].is-in > .sec-more { clip-path: inset(-40px) !important; }
 .pv3-cell {
   position: relative;
   z-index: 1;

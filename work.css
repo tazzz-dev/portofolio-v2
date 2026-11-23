@@ -844,17 +844,17 @@ body.w-page {
 }
 .wk-name.is-on .wk-chips { opacity: 1; transform: none; }
 
-/* --- indikator proyek di bawah wheel --- */
+/* --- indikator proyek (hanya mobile) --- */
 .wk-dots-nav {
-  display: flex;
+  display: none;
   align-items: center;
   gap: 6px;
   padding-left: 2px;
 }
 .wk-dot-btn {
   width: 28px;
-  height: 15px;
-  padding: 6px 0;
+  height: 24px;
+  padding: 10px 0;
   border: 0;
   background: rgba(244, 247, 255, .18);
   background-clip: content-box;
@@ -863,25 +863,6 @@ body.w-page {
 }
 .wk-dot-btn:hover { background-color: rgba(244, 247, 255, .42); }
 .wk-dot-btn.is-on { width: 46px; background-color: var(--lemon); }
-.wk-next {
-  margin-left: 10px;
-  display: grid;
-  place-items: center;
-  width: 30px;
-  height: 30px;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  background: none;
-  color: var(--paper);
-  font-size: 12px;
-  cursor: pointer;
-  transition: background .2s, color .2s, border-color .2s;
-}
-.wk-next:hover {
-  background: var(--lemon);
-  border-color: var(--lemon);
-  color: var(--ink);
-}
 
 /* --- panel foto --- */
 .wk-media {
@@ -1115,7 +1096,7 @@ body.w-page {
 
   /* wheel jadi horizontal; tahun pindah ke bawah nama */
   .wk[data-wk-ready] .wk-list {
-    height: clamp(150px, 22svh, 210px);
+    height: clamp(120px, 16svh, 160px);
     overflow: hidden;
     -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 10%, #000 90%, transparent 100%);
     mask-image: linear-gradient(90deg, transparent 0, #000 10%, #000 90%, transparent 100%);
@@ -1144,7 +1125,11 @@ body.w-page {
     transform: none;
   }
   .wk-go { width: 22px; height: 22px; font-size: 9px; }
-  .wk-dots-nav { justify-content: center; padding-left: 0; }
+  .wk-dots-nav {
+    display: flex;
+    justify-content: center;
+    padding-left: 0;
+  }
 
   .wk-media { gap: 12px; }
   .wk-shot { aspect-ratio: 16 / 9; }
