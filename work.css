@@ -18,17 +18,6 @@ body.w-page {
   min-height: 100vh;
 }
 
-/* kisi kolom samar di belakang, seperti kertas kerja */
-.w-page::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background-image: linear-gradient(90deg, rgba(244, 247, 255, .045) 1px, transparent 1px);
-  background-size: calc(100% / 6) 100%;
-}
-
 .w-status,
 .w-head,
 .w-main,
@@ -1052,6 +1041,26 @@ body.w-page {
 .wk--c .wk-name { font-size: clamp(2.2rem, 5.2vw, 4.6rem); }
 
 /* --- responsif --- */
+/* desktop: halaman diam, hanya info proyek yang menggulir bila perlu */
+@media (min-width: 1041px) {
+  body.w-page { height: 100svh; overflow: hidden; }
+  .wk { height: 100svh; min-height: 0; }
+  .wk-media {
+    max-height: calc(100svh - var(--sw-h) - 84px);
+    min-height: 0;
+  }
+  .wk-shot { flex: 0 1 auto; max-height: 56svh; }
+  .wk-info {
+    min-height: 0;
+    overflow-y: auto;
+    padding-right: 8px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(251, 252, 9, .35) transparent;
+  }
+  .wk-info::-webkit-scrollbar { width: 4px; }
+  .wk-info::-webkit-scrollbar-thumb { background: rgba(251, 252, 9, .35); }
+}
+
 @media (max-width: 1040px) {
   .wk {
     grid-template-columns: 1fr;
@@ -1059,8 +1068,7 @@ body.w-page {
     gap: 24px;
     padding-top: calc(var(--sw-h) + 22px);
     padding-bottom: 96px;
-  }
-  .wk[data-wk-ready] .wk-wheel { height: 48svh; }
+  }  .wk[data-wk-ready] .wk-wheel { height: 48svh; }
   .wk--b .wk-wheel,
   .wk--b .wk-media { order: 0; }
   .wk-media { justify-self: stretch; max-width: none; }
