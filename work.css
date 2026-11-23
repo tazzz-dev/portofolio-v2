@@ -839,16 +839,6 @@ body.w-page {
   transition: opacity .35s ease, transform .45s cubic-bezier(.16, 1, .3, 1);
 }
 .wk-name.is-on .wk-chips { opacity: 1; transform: none; }
-.wk-go {
-  display: grid;
-  place-items: center;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: rgba(244, 247, 255, .12);
-  color: var(--paper);
-  font-size: 11px;
-}
 
 /* --- panel foto --- */
 .wk-media {
@@ -1079,8 +1069,38 @@ body.w-page {
 
 @media (max-width: 600px) {
   .wk { padding-bottom: 20px; }
-  .wk[data-wk-ready] .wk-wheel { height: 40svh; }
-  .wk-name { font-size: clamp(1.8rem, 8.4vw, 2.6rem); }
+
+  /* wheel jadi horizontal; tahun pindah ke bawah nama */
+  .wk[data-wk-ready] .wk-wheel {
+    height: clamp(150px, 22svh, 210px);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 10%, #000 90%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 10%, #000 90%, transparent 100%);
+  }
+  .wk[data-wk-ready] .wk-list li {
+    left: 0;
+    right: 0;
+    top: 50%;
+    display: flex;
+    justify-content: center;
+    transform-origin: center center;
+  }
+  .wk-name {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+    white-space: normal;
+    font-size: clamp(1.8rem, 8.4vw, 2.6rem);
+  }
+  .wk-chips {
+    position: static;
+    translate: none;
+    margin-left: 0;
+    opacity: 1;
+    transform: none;
+  }
+  .wk-go { width: 22px; height: 22px; font-size: 9px; }
+
   .wk-media { gap: 12px; }
   .wk-shot { aspect-ratio: 16 / 9; }
   .wk-nav { width: 34px; height: 34px; font-size: 15px; }

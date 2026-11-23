@@ -104,6 +104,8 @@
   var active = 0;
   var photo = 0;
   var gap = 118;
+  var gapX = 240;
+  var mqMobile = window.matchMedia('(max-width: 600px)');
 
   /* semua foto tiap proyek dibuat sekali, lalu tinggal ditampilkan */
   photosBox.innerHTML = '';
@@ -123,6 +125,7 @@
   var measure = function () {
     var h = wheel.clientHeight || 620;
     gap = Math.max(82, Math.min(126, h / 5.1));
+    gapX = Math.min(wheel.clientWidth * 0.6, 280);
     paintWheel();
   };
 
@@ -138,8 +141,10 @@
       var opacity = abs === 0 ? 1 : Math.max(0.1, 0.7 - abs * 0.19);
       var li = el.closest('li');
 
-      var transform = 'translateY(calc(-50% + ' + (d * gap) + 'px)) scale(' + scale.toFixed(3) + ')' +
-        (drum ? ' rotateX(' + (d * -9) + 'deg) translateZ(' + (-abs * 60) + 'px)' : '');
+      var transform = mqMobile.matches
+        ? 'translateY(-50%) translateX(' + (d * gapX) + 'px) scale(' + scale.toFixed(3) + ')'
+        : 'translateY(calc(-50% + ' + (d * gap) + 'px)) scale(' + scale.toFixed(3) + ')' +
+          (drum ? ' rotateX(' + (d * -9) + 'deg) translateZ(' + (-abs * 60) + 'px)' : '');
 
       li.style.transform = transform;
       li.style.opacity = opacity.toFixed(3);
@@ -219,6 +224,8 @@
   }, { passive: false });
 
   window.addEventListener('resize', measure);
+  if (mqMobile.addEventListener) mqMobile.addEventListener('change', measure);
+  else if (mqMobile.addListener) mqMobile.addListener(measure);
 
   root.setAttribute('data-wk-ready', '');
   setActive(0);
