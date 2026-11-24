@@ -236,7 +236,6 @@ body.w-page {
   color: var(--ink);
   background: rgba(244, 247, 255, .82);
 }
-.w-chip--lemon { background: var(--lemon); }
 .w-go {
   display: grid;
   place-items: center;
