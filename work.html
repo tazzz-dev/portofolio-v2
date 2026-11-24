@@ -186,6 +186,12 @@
       <button class="wk-nav wk-nav--next" type="button" data-wk-photo="1" aria-label="Next photo">›</button>
 
       <span class="wk-count"><b data-wk-count>01</b> / <span data-wk-total>03</span></span>
+
+      <button class="wk-expand" type="button" data-wk-expand aria-label="View fullscreen">
+        <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true">
+          <path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4" fill="none" stroke="currentColor" stroke-width="1.4" />
+        </svg>
+      </button>
     </figure>
 
     <div class="wk-info">
@@ -201,6 +207,36 @@
 <!-- ============ STATUS (kiri bawah) ============ -->
 <div class="wk-status">
   <a class="wk-back" href="index.html#work">&larr; Back to work</a>
+</div>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lb" data-lb hidden data-skin="a">
+  <div class="lb-backdrop" data-lb-close></div>
+
+  <button class="lb-close" type="button" data-lb-close aria-label="Close">✕</button>
+
+  <div class="lb-stage" role="dialog" aria-modal="true" aria-label="Project image">
+    <button class="lb-nav lb-nav--prev" type="button" data-lb-step="-1" aria-label="Previous image">‹</button>
+
+    <div class="lb-center">
+      <figure class="lb-figure">
+        <img class="lb-img" data-lb-img alt="" hidden />
+        <div class="lb-art" data-lb-art hidden></div>
+      </figure>
+      <div class="lb-foot">
+        <span class="lb-title" data-lb-title></span>
+        <span class="lb-count"><b data-lb-count>01</b> / <span data-lb-total>01</span></span>
+      </div>
+    </div>
+
+    <button class="lb-nav lb-nav--next" type="button" data-lb-step="1" aria-label="Next image">›</button>
+  </div>
+
+  <div class="lb-skins" role="group" aria-label="Lightbox style">
+    <button type="button" data-lb-skin="a" class="is-on">A</button>
+    <button type="button" data-lb-skin="b">B</button>
+    <button type="button" data-lb-skin="c">C</button>
+  </div>
 </div>
 
 <script src="work.js"></script>

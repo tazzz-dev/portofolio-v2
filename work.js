@@ -320,6 +320,8 @@
       a.textContent = pair[0] + ' ↗';
       linksEl.appendChild(a);
     });
+
+    paintLb();
   };
 
   var setActive = function (i) {
@@ -333,6 +335,62 @@
     var n = PROJECTS[active].photos.length;
     photo = (photo + dir + n) % n;
     paintMedia();
+  };
+
+  /* ---------- lightbox ---------- */
+  var lb = document.querySelector('[data-lb]');
+  var lbImg = lb ? lb.querySelector('[data-lb-img]') : null;
+  var lbArt = lb ? lb.querySelector('[data-lb-art]') : null;
+  var lbTitle = lb ? lb.querySelector('[data-lb-title]') : null;
+  var lbCount = lb ? lb.querySelector('[data-lb-count]') : null;
+  var lbTotal = lb ? lb.querySelector('[data-lb-total]') : null;
+  var lbOpen = false;
+  var lbLastFocus = null;
+
+  var paintLb = function () {
+    if (!lbOpen || !lb || !lbImg || !lbArt) return;
+
+    var entry = allPhotos.filter(function (x) { return x.p === active && x.i === photo; })[0];
+    if (!entry) return;
+
+    var img = entry.el.querySelector('img');
+    var art = entry.el.querySelector('.w-art');
+
+    if (img) {
+      lbImg.src = img.getAttribute('src');
+      lbImg.alt = '';
+      lbImg.hidden = false;
+      lbArt.hidden = true;
+      lbArt.innerHTML = '';
+    } else if (art) {
+      lbImg.hidden = true;
+      lbImg.removeAttribute('src');
+      lbArt.hidden = false;
+      lbArt.innerHTML = '';
+      lbArt.appendChild(art.cloneNode(true));
+    }
+
+    lbTitle.textContent = names[active].querySelector('.wk-label').textContent.trim();
+    lbCount.textContent = pad(photo + 1);
+    lbTotal.textContent = pad(PROJECTS[active].photos.length);
+  };
+
+  var openLb = function () {
+    if (!lb) return;
+    lbOpen = true;
+    lbLastFocus = document.activeElement;
+    lb.hidden = false;
+    document.documentElement.style.overflow = 'hidden';
+    paintLb();
+    lb.querySelector('.lb-close').focus();
+  };
+
+  var closeLb = function () {
+    if (!lb) return;
+    lbOpen = false;
+    lb.hidden = true;
+    document.documentElement.style.overflow = '';
+    if (lbLastFocus && lbLastFocus.focus) lbLastFocus.focus();
   };
 
   /* ---------- interaksi ---------- */
@@ -350,7 +408,43 @@
     btn.addEventListener('click', function () { stepPhoto(Number(btn.dataset.wkPhoto)); });
   });
 
+  var shot = root.querySelector('.wk-shot');
+  if (shot) {
+    shot.addEventListener('click', function (e) {
+      if (e.target.closest('.wk-nav')) return;
+      openLb();
+    });
+  }
+
+  if (lb) {
+    lb.querySelectorAll('[data-lb-close]').forEach(function (el) {
+      el.addEventListener('click', closeLb);
+    });
+
+    lb.querySelectorAll('[data-lb-step]').forEach(function (btn) {
+      btn.addEventListener('click', function () { stepPhoto(Number(btn.dataset.lbStep)); });
+    });
+
+    lb.querySelectorAll('[data-lb-skin]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        lb.dataset.skin = btn.dataset.lbSkin;
+        lb.querySelectorAll('[data-lb-skin]').forEach(function (b) {
+          b.classList.toggle('is-on', b === btn);
+        });
+      });
+    });
+  }
+
   window.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && lbOpen) { closeLb(); return; }
+
+    /* saat lightbox terbuka: hanya kiri/kanan untuk ganti gambar */
+    if (lbOpen) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); stepPhoto(1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); stepPhoto(-1); }
+      return;
+    }
+
     if (e.metaKey || e.ctrlKey || e.altKey) return;
     if (e.key === 'ArrowDown') { e.preventDefault(); setActive(active + 1); }
     if (e.key === 'ArrowUp') { e.preventDefault(); setActive(active - 1); }
