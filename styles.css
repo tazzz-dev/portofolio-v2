@@ -870,19 +870,6 @@ a.sw-hint:hover { color: var(--paper); }
   border: 1px solid rgba(244, 247, 255, .25);
   padding: 4px 7px;
 }
-.b-shot-year {
-  position: absolute;
-  right: 10px;
-  top: 8px;
-  font-family: var(--font-display);
-  font-size: 30px;
-  line-height: 1;
-  color: var(--lemon);
-  /* foto di belakang bisa terang: kasih plat ink supaya tahun tetap terbaca */
-  background: rgba(7, 10, 17, .72);
-  padding: 2px 7px 1px;
-}
-
 /* =========================================================
    VARIAN C · EDITORIAL GELAP
    ========================================================= */

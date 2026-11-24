@@ -114,7 +114,25 @@
       desc: 'Restaurant menu ordering via QR code: POS, stock, table numbers, and cashier accounts, plus self-service for guests.',
       meta: 'Full-Stack Developer · 2025',
       tags: 'CodeIgniter 3 · MySQL · PHP',
-      photos: ['assets/shots/restoapp.png'],
+      fit: 'contain',
+      photos: [
+        'assets/shots/restoapp/01-login.jpg',
+        'assets/shots/restoapp/02-register.jpg',
+        'assets/shots/restoapp/03-forgot-password.jpg',
+        'assets/shots/restoapp/04-stok-menu.jpg',
+        'assets/shots/restoapp/05-denah-meja.jpg',
+        'assets/shots/restoapp/06-daftar-pesanan.jpg',
+        'assets/shots/restoapp/07-riwayat-income.jpg',
+        'assets/shots/restoapp/08-kelola-users.jpg',
+        'assets/shots/restoapp/09-self-service.jpg',
+        'assets/shots/restoapp/10-checkout-modal.jpg',
+        'assets/shots/restoapp/11-konfirmasi-bayar.jpg',
+        'assets/shots/restoapp/12-pesanan-dibuat.jpg',
+        'assets/shots/restoapp/13-detail-pesanan.jpg',
+        'assets/shots/restoapp/14-cashier-pesanan.jpg',
+        'assets/shots/restoapp/15-guest-self-service.jpg',
+        'assets/shots/restoapp/16-tambah-menu.jpg'
+      ],
       links: [
         ['Repo', 'https://github.com/tazzz-dev/resto-app'],
         ['Document', 'https://drive.google.com/file/d/1llr6OYW9KATH3qa5okMk4BIHrS4VumBy/view']
