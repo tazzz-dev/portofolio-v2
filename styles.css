@@ -1697,13 +1697,7 @@ a.sw-hint:hover { color: var(--paper); }
   color: var(--paper);
   transition: color .2s, background .2s, border-color .2s;
 }
-.badge--dev {
-  background: var(--lemon);
-  color: var(--ink);
-  border-color: var(--lemon);
-}
 .wrk:hover .badge { color: var(--ink); border-color: var(--ink); }
-.wrk:hover .badge--dev { background: var(--ink); color: var(--lemon); border-color: var(--ink); }
 .wrk-role {
   font-family: var(--font-mono);
   font-size: 9px;
@@ -2192,10 +2186,8 @@ a.sw-hint:hover { color: var(--paper); }
 }.pv3-cell--sm { grid-column: span 2; }
 
 .pv3-hero-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.pv3-cell--hero .badge--dev {
-  background: var(--ink);
-  color: var(--lemon);
-  border-color: var(--ink);
+.pv3-cell--hero .pv3-year {
+  color: var(--ink);
 }
 .pv3-num {
   font-family: var(--font-display);
