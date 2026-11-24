@@ -168,13 +168,13 @@
       meta: 'System Analyst & UI/UX · 2024',
       tags: 'Figma · Design Thinking · Maze',
       photos: [
-        'assets/shots/barne/cover.png',
-        'assets/shots/barne/research.png',
-        'assets/shots/barne/information-architecture.png',
-        'assets/shots/barne/wireframe.png',
-        'assets/shots/barne/ui-core-1.png',
-        'assets/shots/barne/ui-core-2.png',
-        'assets/shots/barne/iteration.png'
+        'assets/shots/barne/01-cover.jpg',
+        'assets/shots/barne/02-research.jpg',
+        'assets/shots/barne/03-information-architecture.jpg',
+        'assets/shots/barne/04-wireframe.jpg',
+        'assets/shots/barne/05-ui-core-1.jpg',
+        'assets/shots/barne/06-ui-core-2.jpg',
+        'assets/shots/barne/07-iteration.jpg'
       ],
       links: [
         ['Prototype', 'https://www.figma.com/proto/Pu7LM8RnHtDqDeF7YktIHU/Apk-BarnE?node-id=131-1595&starting-point-node-id=131%3A1595'],
