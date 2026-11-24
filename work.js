@@ -164,11 +164,20 @@
       ]
     },
     {
-      desc: 'UI/UX case study: design thinking process, research, personas, and interface concepts documented in Figma.',
+      desc: 'UI/UX case study of a livestock-management app for novice farmers: field research, design thinking, high-fidelity Figma prototype, and Maze usability testing with 16 respondents.',
       meta: 'System Analyst & UI/UX · 2024',
-      tags: 'Figma · Design Thinking',
-      photos: ['assets/shots/barne.png'],
+      tags: 'Figma · Design Thinking · Maze',
+      photos: [
+        'assets/shots/barne/cover.png',
+        'assets/shots/barne/research.png',
+        'assets/shots/barne/information-architecture.png',
+        'assets/shots/barne/wireframe.png',
+        'assets/shots/barne/ui-core-1.png',
+        'assets/shots/barne/ui-core-2.png',
+        'assets/shots/barne/iteration.png'
+      ],
       links: [
+        ['Prototype', 'https://www.figma.com/proto/Pu7LM8RnHtDqDeF7YktIHU/Apk-BarnE?node-id=131-1595&starting-point-node-id=131%3A1595'],
         ['Document', 'https://drive.google.com/file/d/17-eMZJQ6C2b9_94BUbUz9_P3hgrNrgQs/view']
       ]
     }
