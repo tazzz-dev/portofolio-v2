@@ -889,6 +889,18 @@ body.w-page {
   transition: opacity .45s ease;
 }
 .wk-photo.is-on { opacity: 1; }
+.wk-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* tanpa foto kedua, kontrol galeri disembunyikan */
+.wk-nav[hidden],
+.wk-count[hidden] { display: none; }
 
 .wk-nav {
   position: absolute;
@@ -899,7 +911,7 @@ body.w-page {
   place-items: center;
   width: 40px;
   height: 40px;
-  background: rgba(7, 10, 17, .6);
+  background: rgba(7, 10, 17, .85);
   border: 1px solid var(--line);
   color: var(--paper);
   font-size: 18px;

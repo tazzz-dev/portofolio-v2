@@ -16,17 +16,55 @@
       desc: 'Student productivity app: activity tracking, notes with todos, weekly stats, and AI career analysis. Groq reads completed activities to recommend skills and next steps, and the chat can analyse uploaded PDFs and images.',
       meta: 'Frontend Developer · 2026',
       tags: 'React · Express · Prisma · PostgreSQL · Groq AI',
-      photos: [1, 2, 5],
+      fit: 'contain',
+      photos: [
+        'assets/shots/prodactivity/01-login.jpg',
+        'assets/shots/prodactivity/02-register.jpg',
+        'assets/shots/prodactivity/03-forgot-password.jpg',
+        'assets/shots/prodactivity/04-reset-password.jpg',
+        'assets/shots/prodactivity/17-onboarding-step-1.jpg',
+        'assets/shots/prodactivity/18-onboarding-step-2.jpg',
+        'assets/shots/prodactivity/05-dashboard.jpg',
+        'assets/shots/prodactivity/08-activity.jpg',
+        'assets/shots/prodactivity/09-add-activity.jpg',
+        'assets/shots/prodactivity/10-notes.jpg',
+        'assets/shots/prodactivity/11-ai-chat.jpg',
+        'assets/shots/prodactivity/16-statistics.jpg',
+        'assets/shots/prodactivity/07-career-analysis.jpg',
+        'assets/shots/prodactivity/12-profile.jpg',
+        'assets/shots/prodactivity/13-edit-profile.jpg',
+        'assets/shots/prodactivity/14-settings.jpg',
+        'assets/shots/prodactivity/15-search.jpg',
+        'assets/shots/prodactivity/06-roadmap.jpg'
+      ],
       links: [
         ['Repo', 'https://github.com/ProductiveActivity/ProdActivity'],
         ['Live', 'https://project-web-bersama.vercel.app']
       ]
     },
     {
+      desc: 'Disaster impact map of Indonesia where every number cites its source. 514 regions, 22 years of BNPB data, a year slider, per-region panels, and a community report flow with moderator review.',
+      meta: 'Frontend Developer · 2026',
+      tags: 'React · TypeScript · Leaflet · Supabase',
+      photos: [3, 6, 1],
+      links: [
+        ['Repo', 'https://github.com/rzayyanr/lentera']
+      ]
+    },
+    {
+      desc: 'Campus life RPG built with libGDX: SNBT announcement intro, UPNVJ campus maps, NPC dialog, academic quizzes, an almamater unlock, inventory, and SQLite autosave.',
+      meta: 'Game Developer · 2026',
+      tags: 'Java · libGDX · SQLite · Gradle',
+      photos: [4, 2, 6],
+      links: [
+        ['Repo', 'https://github.com/tazzz-dev/COMPS-to-Life']
+      ]
+    },
+    {
       desc: 'Social action platform: volunteer management, donation campaigns, and impact reporting for communities.',
       meta: 'Full-Stack Developer · 2025',
       tags: 'CodeIgniter 3 · MySQL · PHP',
-      photos: [2, 3, 6],
+      photos: ['assets/shots/socialact.png'],
       links: [
         ['Repo', 'https://github.com/mfaatihyusron/socialact'],
         ['Document', 'https://drive.google.com/file/d/1mlVLPcdQsDg9bWOSuAPvfsQ5b9rIk16E/view']
@@ -36,7 +74,7 @@
       desc: 'Restaurant menu ordering via QR code: POS, stock, table numbers, and cashier accounts, plus self-service for guests.',
       meta: 'Full-Stack Developer · 2025',
       tags: 'CodeIgniter 3 · MySQL · PHP',
-      photos: [3, 1, 4],
+      photos: ['assets/shots/restoapp.png'],
       links: [
         ['Repo', 'https://github.com/tazzz-dev/resto-app'],
         ['Document', 'https://drive.google.com/file/d/1llr6OYW9KATH3qa5okMk4BIHrS4VumBy/view']
@@ -46,7 +84,11 @@
       desc: 'Classic Snake written in C++: terminal grid, keyboard input, growing tail, and a Makefile build.',
       meta: 'Game Developer · 2025',
       tags: 'C++ · Makefile',
-      photos: [4, 5, 1],
+      photos: [
+        'assets/shots/snake-short.png',
+        'assets/shots/snake-medium.png',
+        'assets/shots/snake-long.png'
+      ],
       links: [
         ['Repo', 'https://github.com/tazzz-dev/snake-classic']
       ]
@@ -55,7 +97,10 @@
       desc: 'Two-player Pong in C++: paddle movement, ball physics, scoring, and a Makefile build.',
       meta: 'Game Developer · 2025',
       tags: 'C++ · Makefile',
-      photos: [5, 2, 3],
+      photos: [
+        'assets/shots/pong-gameplay.png',
+        'assets/shots/pong-paused.png'
+      ],
       links: [
         ['Repo', 'https://github.com/tazzz-dev/pong-classic']
       ]
@@ -64,7 +109,7 @@
       desc: 'UI/UX case study: design thinking process, research, personas, and interface concepts documented in Figma.',
       meta: 'System Analyst & UI/UX · 2024',
       tags: 'Figma · Design Thinking',
-      photos: [6, 4, 2],
+      photos: ['assets/shots/barne.png'],
       links: [
         ['Document', 'https://drive.google.com/file/d/17-eMZJQ6C2b9_94BUbUz9_P3hgrNrgQs/view']
       ]
@@ -100,6 +145,8 @@
   var linksEl = root.querySelector('[data-wk-links]');
   var countEl = root.querySelector('[data-wk-count]');
   var totalEl = root.querySelector('[data-wk-total]');
+  var navBtns = Array.prototype.slice.call(root.querySelectorAll('.wk-nav'));
+  var counterEl = root.querySelector('.wk-count');
 
   var total = names.length;
   var active = 0;
@@ -113,11 +160,27 @@
   var allPhotos = [];
 
   PROJECTS.forEach(function (proj, p) {
-    proj.photos.forEach(function (art, i) {
+    proj.photos.forEach(function (item, i) {
       var el = document.createElement('div');
       el.className = 'wk-photo';
-      el.innerHTML = '<div class="w-art w-art--' + art + '" aria-hidden="true">' +
-        '<span class="w-art-n">' + pad(p + 1) + '</span></div>';
+
+      if (typeof item === 'number') {
+        /* masih placeholder: komposisi CSS */
+        el.innerHTML = '<div class="w-art w-art--' + item + '" aria-hidden="true">' +
+          '<span class="w-art-n">' + pad(p + 1) + '</span></div>';
+      } else {
+        var img = document.createElement('img');
+        img.src = item;
+        img.alt = '';
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        if (proj.fit) {
+          img.style.objectFit = proj.fit;
+          img.style.objectPosition = 'center';
+        }
+        el.appendChild(img);
+      }
+
       photosBox.appendChild(el);
       allPhotos.push({ el: el, p: p, i: i });
     });
@@ -171,6 +234,12 @@
 
     countEl.textContent = pad(photo + 1);
     totalEl.textContent = pad(proj.photos.length);
+
+    /* satu foto → tombol geser & counter tidak perlu */
+    var single = proj.photos.length < 2;
+    navBtns.forEach(function (btn) { btn.hidden = single; });
+    if (counterEl) counterEl.hidden = single;
+
     descEl.textContent = proj.desc;
     roleEl.textContent = proj.meta;
     tagsEl.textContent = proj.tags;
