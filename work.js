@@ -2,8 +2,8 @@
    WORK — wheel nama proyek + galeri foto
    ---------------------------------------------------------
    Dipakai oleh work.html.
-   Foto masih komposisi CSS (w-art--1…6); ganti isi
-   PROJECTS[].photos dengan file gambar kapan saja.
+   Foto diambil dari assets/shots/<project>/; kalau diganti,
+   cukup ubah isi PROJECTS[].photos (angka = placeholder CSS).
    ========================================================= */
 (function () {
   'use strict';
@@ -34,8 +34,7 @@
         'assets/shots/prodactivity/12-profile.jpg',
         'assets/shots/prodactivity/13-edit-profile.jpg',
         'assets/shots/prodactivity/14-settings.jpg',
-        'assets/shots/prodactivity/15-search.jpg',
-        'assets/shots/prodactivity/06-roadmap.jpg'
+        'assets/shots/prodactivity/15-search.jpg'
       ],
       links: [
         ['Repo', 'https://github.com/ProductiveActivity/ProdActivity'],
@@ -46,7 +45,23 @@
       desc: 'Disaster impact map of Indonesia where every number cites its source. 514 regions, 22 years of BNPB data, a year slider, per-region panels, and a community report flow with moderator review.',
       meta: 'Frontend Developer · 2026',
       tags: 'React · TypeScript · Leaflet · Supabase',
-      photos: [3, 6, 1],
+      fit: 'contain',
+      photos: [
+        'assets/shots/lentera/01-peta-nasional.jpg',
+        'assets/shots/lentera/02-panel-wilayah.jpg',
+        'assets/shots/lentera/03-daftar-wilayah.jpg',
+        'assets/shots/lentera/04-riwayat.jpg',
+        'assets/shots/lentera/05-detail-kejadian.jpg',
+        'assets/shots/lentera/06-transparansi.jpg',
+        'assets/shots/lentera/07-bandingkan.jpg',
+        'assets/shots/lentera/08-tentang.jpg',
+        'assets/shots/lentera/09-lapor-warga.jpg',
+        'assets/shots/lentera/10-masuk.jpg',
+        'assets/shots/lentera/11-moderator.jpg',
+        'assets/shots/lentera/12-lapor-form.jpg',
+        'assets/shots/lentera/13-laporan-terkirim.jpg',
+        'assets/shots/lentera/14-moderator-detail.jpg'
+      ],
       links: [
         ['Repo', 'https://github.com/rzayyanr/lentera']
       ]
@@ -55,7 +70,17 @@
       desc: 'Campus life RPG built with libGDX: SNBT announcement intro, UPNVJ campus maps, NPC dialog, academic quizzes, an almamater unlock, inventory, and SQLite autosave.',
       meta: 'Game Developer · 2026',
       tags: 'Java · libGDX · SQLite · Gradle',
-      photos: [4, 2, 6],
+      fit: 'contain',
+      photos: [
+        'assets/shots/comps/01-menu.jpg',
+        'assets/shots/comps/02-snbt-web.jpg',
+        'assets/shots/comps/03-snbt-hasil.jpg',
+        'assets/shots/comps/04-gameplay.jpg',
+        'assets/shots/comps/05-dialog-arya.jpg',
+        'assets/shots/comps/06-quiz-arya.jpg',
+        'assets/shots/comps/07-quiz-benar.jpg',
+        'assets/shots/comps/08-pause.jpg'
+      ],
       links: [
         ['Repo', 'https://github.com/tazzz-dev/COMPS-to-Life']
       ]
@@ -64,7 +89,23 @@
       desc: 'Social action platform: volunteer management, donation campaigns, and impact reporting for communities.',
       meta: 'Full-Stack Developer · 2025',
       tags: 'CodeIgniter 3 · MySQL · PHP',
-      photos: ['assets/shots/socialact.png'],
+      fit: 'contain',
+      photos: [
+        'assets/shots/socialact/01-home.jpg',
+        'assets/shots/socialact/02-peta-laporan.jpg',
+        'assets/shots/socialact/03-form-lapor.jpg',
+        'assets/shots/socialact/04-galeri-sesudah.jpg',
+        'assets/shots/socialact/05-galeri-sebelum.jpg',
+        'assets/shots/socialact/06-transparansi.jpg',
+        'assets/shots/socialact/07-donasi.jpg',
+        'assets/shots/socialact/08-volunteer.jpg',
+        'assets/shots/socialact/09-login.jpg',
+        'assets/shots/socialact/10-super-admin.jpg',
+        'assets/shots/socialact/11-finance.jpg',
+        'assets/shots/socialact/12-field-coordinator.jpg',
+        'assets/shots/socialact/13-event-volunteer-admin.jpg',
+        'assets/shots/socialact/14-approval-donasi.jpg'
+      ],
       links: [
         ['Repo', 'https://github.com/mfaatihyusron/socialact'],
         ['Document', 'https://drive.google.com/file/d/1mlVLPcdQsDg9bWOSuAPvfsQ5b9rIk16E/view']
